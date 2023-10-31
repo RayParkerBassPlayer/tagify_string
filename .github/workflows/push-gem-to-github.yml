@@ -25,7 +25,7 @@ jobs:
         touch .gem/credentials
         chmod 600 .gem/credentials
         echo ":github: Bearer ${TOKEN}" >> .gem/credentials
-        ls -la
+        cat .gem/credentials
 
         gem build *.gemspec
         gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem

@@ -19,16 +19,8 @@ jobs:
       with:
           bundler-cache: true    # bundle install
 
-    - name: Publish to GPR
-      run: |
-        mkdir -p .gem/
-        touch .gem/credentials
-        chmod 600 .gem/credentials
-        echo ":github: Bearer ${TOKEN}" >> .gem/credentials
-        cat .gem/credentials
-
-        gem build *.gemspec
-        gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
-      env:
-        TOKEN: ${{secrets.GITHUB_TOKEN}}
-        OWNER: shermanstravel
+    - name: Build and publish gem
+      uses: jstastny/publish-gem-to-github@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        owner: shermanstravel

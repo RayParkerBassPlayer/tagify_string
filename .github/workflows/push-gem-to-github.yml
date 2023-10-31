@@ -21,16 +21,14 @@ jobs:
 
     - name: Publish to GPR
       run: |
-        ls -la
-        pwd
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
         chmod 600 $HOME/.gem/credentials
-        echo ":github: ${TOKEN}" >> $HOME/.gem/credentials
-        cat $HOME/.gem/credentials
+        echo ":github: Bearer ${TOKEN}" >> $HOME/.gem/credentials
+        ls -la
 
         gem build *.gemspec
         gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
       env:
-        TOKEN: "Bearer ${{secrets.GITHUB_TOKEN}}"
+        TOKEN: ${{secrets.GITHUB_TOKEN}}
         OWNER: shermanstravel

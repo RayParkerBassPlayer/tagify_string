@@ -14,6 +14,8 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{This is reasonably trivial functionality being split off into a gem for the purpose of consistency throughout a number of Shermans applications.  This give Shermans the ability to take any string and 'tagify' it so that it is a predictable and typeable (in the keyboard sense) string for writing custom queries and reports on the SailThru web site.}
   gem.homepage      = "https://github.com/shermanstravel/tagify_string"
 
+  gem.metadata["github_repo"] = "https://github.com/shermanstravel/tagify_string"
+
   gem.add_development_dependency "rspec"
   gem.add_development_dependency "rake"
   gem.add_development_dependency "i18n"

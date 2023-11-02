@@ -23,4 +23,4 @@ jobs:
       uses: jstastny/publish-gem-to-github@master
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        owner: shermanstravel
+        owner: ${{ github.repository_owner }}

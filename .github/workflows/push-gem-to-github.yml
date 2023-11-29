@@ -1,0 +1,30 @@
+name: Push Gem to Github Packages
+
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - "master"
+
+jobs:
+  build:
+    name: Build + Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: ruby/setup-ruby@v1 # .ruby-version
+      with:
+          bundler-cache: true    # bundle install
+
+    - name: Build and publish gem
+      uses: jstastny/publish-gem-to-github@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        owner: ${{ github.repository_owner }}
